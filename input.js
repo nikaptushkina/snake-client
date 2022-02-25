@@ -1,5 +1,11 @@
+const { connect } = require("./client");
+
 // setup interface to handle user input from stdin
-const setupInput = function () {
+
+let connection;
+
+const setupInput = (conn) => {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
@@ -8,8 +14,14 @@ const setupInput = function () {
   const handleUserInput = function(command) {
     if(command === '\u0003') {
       process.exit();
-    } else {
-      conn.write(command)
+    } else if(command === 'w') {
+      conn.write('Move: up');
+    } else if(command === 'a') {
+      conn.write('Move: left');
+    } else if(command === 's') {
+      conn.write('Move: down');
+    } else if(command === 'd') {
+      conn.write('Move: right');
     }
   };
   stdin.on('data', (data) => {
