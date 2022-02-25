@@ -3,7 +3,28 @@ const { connect } = require('./client');
 const net = require("net");
 
 console.log("Connecting ...");
-connect();
+
+// setup interface to handle user input from stdin
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding('utf8');
+  stdin.resume();
+
+  const handleUserInput = function(command) {
+    if(command === '\u0003') {
+      process.exit();
+    } else {
+      conn.write(command)
+    }
+  };
+  stdin.on('data', (data) => {
+    handleUserInput(data);
+  });
+  return stdin;
+};
+
+setupInput(connect());;
 /* moved the function below to client.js:
 // connection with game server
 const connect = function () {
@@ -23,3 +44,4 @@ const connect = function () {
   return conn;
 };
 */
+
