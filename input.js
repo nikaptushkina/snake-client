@@ -22,6 +22,12 @@ const setupInput = (conn) => {
       conn.write('Move: down');
     } else if(command === 'd') {
       conn.write('Move: right');
+    } else if(command === 'o') {
+      conn.write('Say: Wow! Amazing!');
+    } else if(command === 'x') {
+      conn.write('Say: Look out!');
+    } else if(command === 'z') {
+      conn.write('Say: SssSs...');
     }
   };
   stdin.on('data', (data) => {
