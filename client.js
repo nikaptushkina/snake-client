@@ -20,9 +20,10 @@ const connect = function () {
     console.log('Server says: ', data);
   });
 
-  //prints name to server
+  // prints name to server & sends snake up (removed)
   conn.on('connect', () => {
     conn.write('Name: NIK');
+    /* conn.write('Move: up'); */
   });
 
   return conn;
