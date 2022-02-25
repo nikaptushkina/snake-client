@@ -1,10 +1,5 @@
-// requirements
-const { connect } = require('./client');
 const net = require("net");
 
-console.log("Connecting ...");
-connect();
-/* moved the function below to client.js:
 // connection with game server
 const connect = function () {
   const conn = net.createConnection({
@@ -22,4 +17,6 @@ const connect = function () {
 
   return conn;
 };
-*/
+
+// export
+module.exports = {  connect };
