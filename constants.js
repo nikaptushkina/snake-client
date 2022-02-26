@@ -1,16 +1,18 @@
+// constants to use in other files
 const IP = 'localhost';
 const PORT = 50541;
 const UP = 'w';
 const LEFT = 'a';
 const DOWN = 's';
 const RIGHT = 'd';
-const NAME = 'NIK'
+const NAME = 'NIK';
 const MESSAGE = {
   o: 'Say: Wow! Amazing!',
   x: 'Say: Look out!',
   z: 'Say: SssSs...'
 };
 
+// export
 module.exports = {
   IP,
   PORT,

@@ -1,8 +1,9 @@
+// requirements
 const net = require("net");
 const { IP, PORT, NAME } = require("./constants");
 
 // connection with game server
-const connect = function () {
+const connect = function() {
   const conn = net.createConnection({
     host: IP,
     port: PORT
@@ -31,4 +32,4 @@ const connect = function () {
 };
 
 // export
-module.exports = {  connect };
+module.exports = { connect };

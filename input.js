@@ -12,19 +12,20 @@ const setupInput = (conn) => {
   stdin.setEncoding('utf8');
   stdin.resume();
 
+  // ability to take keyboard commands
   const handleUserInput = function(command) {
-    if(command === '\u0003') {
+    if (command === '\u0003') {
       process.exit();
-    } else if(command === UP) {
+    } else if (command === UP) {
       conn.write('Move: up');
-    } else if(command === LEFT) {
+    } else if (command === LEFT) {
       conn.write('Move: left');
-    } else if(command === DOWN) {
+    } else if (command === DOWN) {
       conn.write('Move: down');
-    } else if(command === RIGHT) {
+    } else if (command === RIGHT) {
       conn.write('Move: right');
-    } else if(MESSAGE[command]) {
-      conn.write(MESSAGE[command])
+    } else if (MESSAGE[command]) {
+      conn.write(MESSAGE[command]);
     }
   };
   stdin.on('data', (data) => {
