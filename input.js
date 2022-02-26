@@ -1,9 +1,10 @@
-const { connect } = require("./client");
+// requirements
+const { UP, LEFT, RIGHT, DOWN, MESSAGE } = require('./constants');
 
-// setup interface to handle user input from stdin
-
+// for TCP connection onject
 let connection;
 
+// setup interface to handle user input from stdin
 const setupInput = (conn) => {
   connection = conn;
   const stdin = process.stdin;
@@ -14,20 +15,16 @@ const setupInput = (conn) => {
   const handleUserInput = function(command) {
     if(command === '\u0003') {
       process.exit();
-    } else if(command === 'w') {
+    } else if(command === UP) {
       conn.write('Move: up');
-    } else if(command === 'a') {
+    } else if(command === LEFT) {
       conn.write('Move: left');
-    } else if(command === 's') {
+    } else if(command === DOWN) {
       conn.write('Move: down');
-    } else if(command === 'd') {
+    } else if(command === RIGHT) {
       conn.write('Move: right');
-    } else if(command === 'o') {
-      conn.write('Say: Wow! Amazing!');
-    } else if(command === 'x') {
-      conn.write('Say: Look out!');
-    } else if(command === 'z') {
-      conn.write('Say: SssSs...');
+    } else if(MESSAGE[command]) {
+      conn.write(MESSAGE[command])
     }
   };
   stdin.on('data', (data) => {
